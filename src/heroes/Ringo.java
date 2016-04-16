@@ -34,18 +34,18 @@ public class Ringo extends Hero implements Abilities{
     
     @Override
     public int firstAbility(){
-        System.out.println("ANKLESHOT !!!!");
+        System.out.println("Ringo \t" + "ANKLESHOT !!!!");
         return calculateDamage(2, 215, 0);
     }
     @Override
     public int secondAbility(){
-        System.out.println("SPEEDY MOVES !!!");
+        System.out.println("Ringo \t" + "SPEEDY MOVES !!!");
         applyBuff("atkSpeed", 0.9, 6);
         return 0;
     }
     @Override
     public int ultimateAbility(){
-        System.out.println("HELLFIRE BREW!!!");
+        System.out.println("Ringo \t" + "HELLFIRE BREW!!!");
         return calculateDamage(2, 480, 100);
     }
     
@@ -55,21 +55,24 @@ public class Ringo extends Hero implements Abilities{
                 firstCd = defaultFcd;
                 return true;
             }
-            else firstCd--; return false;       
+            else firstCd--; 
+            return false;       
         }
         if(ability == 2){
             if(secondCd == 0){
                 secondCd = defaultScd;
                 return true;
             }
-            else secondCd--; return false;    
+            else secondCd--; 
+            return false;    
         }
         if(ability == 3){
             if(ultCd == 0){
                 ultCd = defaultUcd;
                 return true;
             }
-            else ultCd--; return false;            
+            else ultCd--; 
+            return false;
         }
         return false;
     }

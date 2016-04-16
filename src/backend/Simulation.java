@@ -34,9 +34,10 @@ public class Simulation
         public void run() {
             hero1.manageBuffs();
             hero2.manageBuffs();
-            if(hero1.onCd(1)) hero1.firstAbility();
-            if(hero1.onCd(2)) hero1.secondAbility();
-            if(hero1.onCd(3)) hero1.ultimateAbility();
+            if(hero1.onCd(1)) {System.out.println("Damage: " + hero1.firstAbility()); hero2.setHealth(hero2.getHealth()-hero1.firstAbility());}
+            if(hero1.onCd(2)) hero2.setHealth(hero2.getHealth()-hero1.secondAbility());
+            if(hero1.onCd(3)) {System.out.println("Damage: " + hero1.ultimateAbility()); hero2.setHealth(hero2.getHealth()-hero1.ultimateAbility());}
+            System.out.println(hero2.getName() + "'s health: " + hero2.getHealth());
             
         }
     }

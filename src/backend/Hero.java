@@ -29,12 +29,12 @@ public class Hero implements Abilities
     public Hero(String name, int lvl,  int weaponDmg, int maxWeaponDmg, int health, int maxHealth, int energy, int maxEnergy, int armor, int maxArmor, int shield, int maxShield, double atkSpeed, double maxAtkSpeed, int healthRegen, int maxHealthRegen)
     {
         this.name = name;
-        this.weaponDmg = (maxWeaponDmg-weaponDmg)/MAX_LEVEL * lvl;
-        this.health = (maxHealth-health)/MAX_LEVEL * lvl;
-        this.energy = (maxEnergy-energy)/MAX_LEVEL * lvl;
-        this.armor = (maxArmor-armor)/MAX_LEVEL * lvl;
-        this.shield = (maxShield-shield)/MAX_LEVEL * lvl;
-        this.atkSpeed = (maxAtkSpeed-atkSpeed)/MAX_LEVEL * lvl;
+        this.weaponDmg = weaponDmg + (maxWeaponDmg-weaponDmg)/MAX_LEVEL * lvl;
+        this.health = health + (maxHealth-health)/MAX_LEVEL * lvl;
+        this.energy = energy + (maxEnergy-energy)/MAX_LEVEL * lvl;
+        this.armor = armor + (maxArmor-armor)/MAX_LEVEL * lvl;
+        this.shield = shield + (maxShield-shield)/MAX_LEVEL * lvl;
+        this.atkSpeed = atkSpeed + (maxAtkSpeed-atkSpeed)/MAX_LEVEL * lvl;
         fullEnergy = this.energy;
         fullHealth = this.health;
     }
@@ -53,7 +53,7 @@ public class Hero implements Abilities
     /**
      * changes stats
      */
-    public void setHealth(int health){this.fullHealth = health;}
+    public void setHealth(int health){this.health = health;}
     public void setEnergy(int energy){ this.energy = energy; }
     public void setArmor(int armor){ this.armor = armor; }
     public void setShield(int shield){ this.shield = shield; }
