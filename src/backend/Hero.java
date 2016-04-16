@@ -20,7 +20,13 @@ public class Hero implements Abilities
     private double atkSpeed;
     private int armor;
     private int shield;
-
+    private double defaultFcd;
+    private double defaultScd;
+    private double defaultUcd;
+    private double firstCd;
+    private double secondCd;
+    private double ultCd;
+    
     ArrayList<Buff> buffs = new ArrayList<Buff>();
 
     /**
@@ -37,6 +43,15 @@ public class Hero implements Abilities
         this.atkSpeed = atkSpeed + (maxAtkSpeed-atkSpeed)/MAX_LEVEL * lvl;
         fullEnergy = this.energy;
         fullHealth = this.health;
+        firstCd = 0;
+        secondCd = 0;
+        ultCd = 0;
+    }
+    
+    public void setDefaultCd(double fcd, double scd, double ucd){
+        defaultFcd = fcd;
+        defaultScd = scd;
+        defaultUcd = ucd;
     }
 
     /**
@@ -126,7 +141,32 @@ public class Hero implements Abilities
     public int ultimateAbility() {
         return 0;
     }
-    public boolean onCd(int ability) {
+    
+    public boolean onCd(int ability){
+        if(ability == 1){
+            if(firstCd == 0){
+                firstCd = defaultFcd;
+                return true;
+            }
+            else firstCd--; 
+            return false;       
+        }
+        if(ability == 2){
+            if(secondCd == 0){
+                secondCd = defaultScd;
+                return true;
+            }
+            else secondCd--; 
+            return false;    
+        }
+        if(ability == 3){
+            if(ultCd == 0){
+                ultCd = defaultUcd;
+                return true;
+            }
+            else ultCd--; 
+            return false;
+        }
         return false;
     }
 } 

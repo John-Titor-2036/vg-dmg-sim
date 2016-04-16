@@ -12,59 +12,27 @@ import backend.Hero;
  * @author Jerry
  */
 public class Ardan extends Hero{
-    
-    private final int defaultFcd = 13;
-    private final double defaultScd = 20/getAtkSpeed();
-    private final int defaultUcd = 90;
-    private int firstCd = 0;
-    private double secondCd = 0;
-    private int ultCd = 0;
-        //name, lvl, wpDmg, maxWpDmg, hp, maxHp, energy, maxEnergy, armor, maxArmor, shield, maxShield, atkSpd, maxAtkSpd
+
+        //name, lvl, wpDmg, maxWpDmg, hp, maxHp, energy, maxE nergy, armor, maxArmor, shield, maxShield, atkSpd, maxAtkSpd
     public Ardan(int level){
-        super("Ardan", level, 66, 131, 646, 1405, 180, 422, 20, 86, 20, 86, 1.0, 1.36, 1, 12);    
+        super("Ardan", level, 66, 131, 646, 1405, 180, 422, 20, 86, 20, 86, 1.0, 1.36, 1, 12);
+        setDefaultCd(13, 20/getAtkSpeed(), 90);
     }
     public Ardan(){
         super("Ardan", 12, 66, 131, 646, 1405, 180, 422, 20, 86, 20, 86, 1.0, 1.36, 1, 12);    
+        setDefaultCd(13, 20/getAtkSpeed(), 90);
     }
     
     public int firstAbility(){
-        System.out.println("Ardan \t" + "Vanguard");
-        return calculateDamage(2, 215, 0);
+        System.out.println(getName() + ": \t" + "Vanguard");
+        return calculateDamage(2, 250, 0);
     }
     public int secondAbility(){
-        System.out.println("Ardan \t" + "Fisted in the ass");
-        //applyBuff("atkSpeed", .9);
-        return 0;
+        System.out.println(getName() + ": \t" + "Blood for Blood");
+        return calculateDamage(1, getWeaponDmg()+190, 0);
     }
     public int ultimateAbility(){
-        System.out.println("Ardan \t" + "Useless AF gauntlet");
-        return calculateDamage(2, 480, 100);
-    }
-    public boolean onCd(int ability){
-        if(ability == 1){
-            if(firstCd == 0){
-                firstCd = defaultFcd;
-                return true;
-            }
-            else firstCd--;
-            return false;
-        }
-        if(ability == 2){
-            if(secondCd == 0){
-                secondCd = defaultScd;
-                return true;
-            }
-            else secondCd--;   
-            return false;
-        }
-        if(ability == 3){
-            if(ultCd == 0){
-                ultCd = defaultUcd;
-                return true;
-            }
-            else ultCd--;    
-            return false;
-        }
-        return false;
+        System.out.println(getName() + ": \t" + "Gauntlet");
+        return calculateDamage(2, 50, 0);
     }
 }
