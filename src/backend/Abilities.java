@@ -2,7 +2,7 @@ package backend;
 
 public interface Abilities {
     
-    int firstAbility();
-    int secondAbility();
-    int ultimateAbility();
+    double firstAbility();
+    double secondAbility();
+    double ultimateAbility();
 }

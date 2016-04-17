@@ -12,8 +12,8 @@ public class Hero implements Abilities
     private String name;
 
     private final int MAX_LEVEL = 11;
-    private int health;
-    private int fullHealth;
+    private double health;
+    private double fullHealth;
     private int energy;
     private int fullEnergy;
     private int weaponDmg;
@@ -58,19 +58,19 @@ public class Hero implements Abilities
      * gets stats
      */
     public String getName(){ return name; }
-    public int getHealth(){ return health; }    
+    public double getHealth(){ return health; }    
     public int getEnergy(){ return energy; }
     public int getWeaponDmg(){ return weaponDmg; }
     public int getArmor(){ return armor; }
     public int getShield(){ return shield; }
     public double getAtkSpeed(){ return atkSpeed; }
-
+    public double getFullHealth(){return fullHealth; }
     /**
      * changes stats
      */
-    public void setHealth(int health){this.health = health;}
+    public void setHealth(double health){this.health = health;}
     public void setEnergy(int energy){ this.energy = energy; }
-    public void setArmor(int armor){ this.armor = armor; }
+    public void setArmor( int armor){ this.armor = armor; }
     public void setShield(int shield){ this.shield = shield; }
     public void setAtkSpeed(double atkSpd){ this.atkSpeed = atkSpd; }
 
@@ -80,7 +80,7 @@ public class Hero implements Abilities
      *Type 4 = Basic Attack Weapon Component
      *Type anything else = True Damage
      */
-    public int calculateDamage(int type, int damage, double pierce)
+    public double calculateDamage(int type, int damage, double pierce)
     {
         int damageTaken = 0;
         int critRng;
@@ -132,13 +132,13 @@ public class Hero implements Abilities
     }
     
 
-    public int firstAbility() {
+    public double firstAbility() {
         return 0;
     }
-    public int secondAbility() {
+    public double secondAbility() {
         return 0;
     }
-    public int ultimateAbility() {
+    public double ultimateAbility() {
         return 0;
     }
     

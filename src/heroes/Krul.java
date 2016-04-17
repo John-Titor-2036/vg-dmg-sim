@@ -30,17 +30,17 @@ public class Krul extends Hero implements Abilities{
     }
     
     @Override
-    public int firstAbility(){
+    public double firstAbility(){
         System.out.println(getName() + ": \t" + "Dead Man's Rush");
         return calculateDamage(2, 215, 0);
     }
     @Override
-    public int secondAbility(){
+    public double secondAbility(){
         System.out.println(getName() + ": \t" + "Spectral Smite");
         return calculateDamage(2, 350, 0);
     }
     @Override
-    public int ultimateAbility(){
+    public double ultimateAbility(){
         System.out.println(getName() + ": \t" + "From Hell's Heart");
         return calculateDamage(2, 650, 0);
     }

@@ -23,15 +23,15 @@ public class Ardan extends Hero{
         setDefaultCd(13, 20/getAtkSpeed(), 90);
     }
     
-    public int firstAbility(){
+    public double firstAbility(){
         System.out.println(getName() + ": \t" + "Vanguard");
         return calculateDamage(2, 250, 0);
     }
-    public int secondAbility(){
+    public double secondAbility(){
         System.out.println(getName() + ": \t" + "Blood for Blood");
         return calculateDamage(1, getWeaponDmg()+190, 0);
     }
-    public int ultimateAbility(){
+    public double ultimateAbility(){
         System.out.println(getName() + ": \t" + "Gauntlet");
         return calculateDamage(2, 50, 0);
     }

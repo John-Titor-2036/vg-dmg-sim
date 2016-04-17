@@ -26,18 +26,18 @@ public class Ringo extends Hero implements Abilities{
     }
     
     @Override
-    public int firstAbility(){
+    public double firstAbility(){
         System.out.println(getName() + ": \t" + "Ankleshot");
         return calculateDamage(2, 215, 0);
     }
     @Override
-    public int secondAbility(){
+    public double secondAbility(){
         System.out.println(getName() + ": \t" + "Twirling Silver");
         applyBuff("atkSpeed", 0.9, 6);
         return 0;
     }
     @Override
-    public int ultimateAbility(){
+    public double ultimateAbility(){
         System.out.println(getName() + ": \t" + "Hellfire Brew");
         return calculateDamage(2, 480, 0);
     }
