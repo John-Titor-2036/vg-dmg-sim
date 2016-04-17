@@ -68,7 +68,10 @@ public class Hero implements Abilities
     /**
      * changes stats
      */
-    public void setHealth(double health){this.health = health;}
+    public void setHealth(double health){
+        if(health <= 0) health = 0;
+        this.health = health;
+    }
     public void setEnergy(int energy){ this.energy = energy; }
     public void setArmor( int armor){ this.armor = armor; }
     public void setShield(int shield){ this.shield = shield; }

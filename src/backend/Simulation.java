@@ -44,6 +44,7 @@ public class Simulation
             healthbars = new DrawPanel();
             frame = new JFrame(hero1.getName() + " v.s " + hero2.getName());
             frame.setSize(500, 300);
+            frame.setLayout(new BorderLayout());
             width = frame.getWidth();
             height = frame.getHeight();
             frame.setResizable(false);
@@ -56,14 +57,26 @@ public class Simulation
     }
     
     class DrawPanel extends JPanel {
+        
+        int strokeWidth = 5;
         public void paintComponent(Graphics g){
+           
+            Graphics2D g2d = (Graphics2D) g;            
             double percentHealth1 = hero1.getHealth()/hero1.getFullHealth();
             double percentHealth2 = hero2.getHealth()/hero2.getFullHealth();
-            g.setColor(Color.RED);
-            g.fillRect(0, 0, (int)(percentHealth1 * (width/2))+1, 30); //Player 1 Healthbar
-            g.setColor(Color.GREEN);
-            g.fillRect(width-(int)(percentHealth2 * (width/2)), 0, 250, 30); // Player 2 Healthbar
+            g2d.setColor(Color.RED);
+            g2d.fillRect(0, strokeWidth, (int)(percentHealth1 * (width/2))+1, 50-strokeWidth); //Player 1 Healthbar
+            g2d.setColor(Color.GREEN);
+            g2d.fillRect(width, strokeWidth, -(int)(percentHealth2 * (width/2))+1, 50-strokeWidth); // Player 2 Healthbar
             
+            g2d.setColor(Color.BLACK);
+            g2d.setStroke(new BasicStroke(strokeWidth));
+            g2d.drawRect(0+strokeWidth/2, 0+strokeWidth/2, width-2*strokeWidth, 50);
+            g2d.drawLine(width/2, 0, 250, 50);
+            
+            g2d.setFont(new Font("Calibri", Font.BOLD, 16));
+            g2d.drawString("" + (int)hero1.getHealth() + "/" + (int)hero1.getFullHealth(), 45, 40);
+            g2d.drawString("" + (int)hero2.getHealth() + "/" + (int)hero2.getFullHealth(), width-130, 40);
         }
     }
     class Hero1BasicAttack extends TimerTask{
