@@ -19,7 +19,7 @@ public class Krul extends Hero implements Abilities{
     // TODO: Actually calcualte the cd's according to the items
 
     
-    public Krul(int level){
+    public Krul(int level, int first, int second, int third){
         super("Krul", level, 68, 140, 643, 1501, 220, 506, 20, 75, 20, 75, 1.0, 1.36, 1, 12);  
         setDefaultCd(8, 10, 50);
         
@@ -30,19 +30,25 @@ public class Krul extends Hero implements Abilities{
     }
     
     @Override
-    public double firstAbility(){
+    public boolean firstAbility(){
+        if(onCd(1)) return false;
         System.out.println(getName() + ": \t" + "Dead Man's Rush");
-        return calculateDamage(2, 215, 0);
+        getTarget().setHealth(getTarget().getHealth()-calculateDamage(2, 215, 0));
+        return true;
     }
     @Override
-    public double secondAbility(){
+    public boolean secondAbility(){
+        if(onCd(2)) return false;
         System.out.println(getName() + ": \t" + "Spectral Smite");
-        return calculateDamage(2, 350, 0);
+        getTarget().setHealth(getTarget().getHealth()-calculateDamage(2, 350, 0));
+        return true;
     }
     @Override
-    public double ultimateAbility(){
+    public boolean thirdAbility(){
+        if(onCd(3)) return false;
         System.out.println(getName() + ": \t" + "From Hell's Heart");
-        return calculateDamage(2, 650, 0);
+        getTarget().setHealth(getTarget().getHealth()-calculateDamage(2, 650, 0));
+        return true;
     }
     
 }

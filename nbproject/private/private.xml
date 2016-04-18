@@ -5,8 +5,11 @@
         <group>
             <file>file:/C:/Users/Jerry/Desktop/vg-dmg-sim/src/backend/Abilities.java</file>
             <file>file:/C:/Users/Jerry/Desktop/vg-dmg-sim/src/backend/Hero.java</file>
+            <file>file:/C:/Users/Jerry/Desktop/vg-dmg-sim/src/heroes/Krul.java</file>
             <file>file:/C:/Users/Jerry/Desktop/vg-dmg-sim/src/backend/Simulation.java</file>
+            <file>file:/C:/Users/Jerry/Desktop/vg-dmg-sim/src/backend/runner.java</file>
             <file>file:/C:/Users/Jerry/Desktop/vg-dmg-sim/src/heroes/Ringo.java</file>
+            <file>file:/C:/Users/Jerry/Desktop/vg-dmg-sim/src/backend/Buff.java</file>
             <file>file:/C:/Users/Jerry/Desktop/vg-dmg-sim/src/heroes/Ardan.java</file>
         </group>
     </open-files>

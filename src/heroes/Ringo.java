@@ -15,31 +15,38 @@ import backend.Hero;
 public class Ringo extends Hero implements Abilities{
         //name, lvl, wpDmg, maxWpDmg, hp, maxHp, energy, maxEnergy, armor, maxArmor, shield, maxShield, atkSpd, maxAtkSpd
     
-    public Ringo(int level){
+    public Ringo(int level, int first, int second, int third){
         super("Ringo", level, 66, 131, 646, 1405, 180, 422, 20, 86, 20, 86, 1.0, 1.36, 1, 12);
         setDefaultCd(7, 10, 90);
-        
+        setEnergyCost(90, 90, 130);
+        setAbilityScaling(new double[]{1.25, 80, 125, 170, 215, 350}, new double[]{.8, 0, 0, 0, 0, 0}, new double[]{.75, 250, 365, 480});
     }
     public Ringo(){
         super("Ringo", 12, 66, 131, 646, 1405, 180, 422, 20, 86, 20, 86, 1.0, 1.36, 1, 12);    
         setDefaultCd(7, 10, 90);
+        setEnergyCost(90, 90, 130);
     }
     
     @Override
-    public double firstAbility(){
+    public boolean firstAbility(){
+        if(onCd(1)) System.out.print(onCd(1));
         System.out.println(getName() + ": \t" + "Ankleshot");
-        return calculateDamage(2, 215, 0);
+        getTarget().setHealth(getTarget().getHealth()- calculateDamage(2, getFirstDamage(), 0));
+        return true;
     }
     @Override
-    public double secondAbility(){
+    public boolean secondAbility(){
+        if(onCd(2)) return false;
         System.out.println(getName() + ": \t" + "Twirling Silver");
         applyBuff("atkSpeed", 0.9, 6);
-        return 0;
+        return true;
     }
     @Override
-    public double ultimateAbility(){
+    public boolean thirdAbility(){
+        if(onCd(3)) return false;
         System.out.println(getName() + ": \t" + "Hellfire Brew");
-        return calculateDamage(2, 480, 0);
+        getTarget().setHealth(getTarget().getHealth()-calculateDamage(2, getThirdDamage(), 0));
+        return true;
     }
     
 }
